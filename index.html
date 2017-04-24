@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>JS取单选、复选的值</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+	</head>
+
+	<body>
+		<div class="mui-input-row mui-checkbox mui-left">
+			<label>运动</label>
+			<input name="checkbox1" value="运动" type="checkbox" class="checkBox">
+		</div>
+		<div class="mui-input-row mui-checkbox mui-left">
+			<label>看书</label>
+			<input name="checkbox1" value="看书" type="checkbox" class="checkBox">
+		</div>
+		<div class="mui-input-row mui-radio mui-left">
+			<label>选项1</label>
+			<input name="radio1" type="radio" value="选项1" class="radioBox">
+		</div>
+		<div class="mui-input-row mui-radio mui-left">
+			<label>选项2</label>
+			<input name="radio1" type="radio" value="选项2" class="radioBox">
+		</div>
+		<button class="mui-btn" onclick="getVals();">获取值</button>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+
+			function getVals() {
+				var res = getRadioRes('checkBox');
+				var res2=getone('radioBox');
+				if(res.length < 1&&res2==null) {
+					mui.toast('请选择');
+					return;
+				}
+				if(res2!=null&&res.length>=1){
+					mui.toast(res+res2);
+					return;
+				}
+				if(res2!=null){
+					mui.toast(res2);
+					return;
+				}
+				if(res.length>1){
+					mui.toast(res);	
+					return;
+				}
+				
+				
+			};
+
+			function getRadioRes(className) {
+				var rdsObj = document.getElementsByClassName(className);
+				var checkVal = new Array();
+				var k = 0;
+				for(var i = 0; i < rdsObj.length; i++) {
+					if(rdsObj[i].checked) {
+						checkVal[k] = rdsObj[i].value;
+						k++;
+					}
+				}
+				return checkVal;
+			}
+			
+			function getone(className){
+				var rdsObj=document.getElementsByClassName(className);
+				var checkVal=null;
+				for(var i=0;i<rdsObj.length;i++){
+					if(rdsObj[i].checked){
+						checkVal=rdsObj[i].value;
+					}
+				}
+				return checkVal;
+			}
+		</script>
+	</body>
+
+</html>
