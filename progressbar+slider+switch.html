@@ -1,0 +1,71 @@
+<doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">进度条</h1>
+		</header>
+		<!--<div class="mui-progressbar" id="demo1">
+			<span></span>
+		</div>-->
+		<div class="mui-content">
+			<!--<div class="mui-input-row mui-input-range">
+				<label>Range</label>
+				<input type="range" min="0" max="100" id="range1"> 23131
+				<input type="range" min="0" max="100" id="range2">
+			</div>
+			<div style="padding:20px;">
+				<input type="button" class="mui-btn" value="获取滑块值" onclick="getVal();" />
+			</div>-->
+			<div class="mui-switch mui-active" id="my-switch">
+				<div class="mui-switch-handle"></div>
+			</div>
+			<!--<div class="mui-switch mui-switch-mini">
+				<div class="mui-switch-handle"></div>
+			</div>-->
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+//			mui("#demo1").progressbar({
+//				progress: 20
+//			}).show();
+//			/*更改显示进度条*/
+//			mui("#demo1").progressbar().setProgress(90);
+//			/*关闭进度条*/
+//			mui("#demo1").progressbar().hide();
+//			//			备注：关闭进度条一般用于动态创建（DOM中预先未定义）的进度条，调用hide方法后，会直接删掉对应的DOM节点；若已提前创建好DOM节点的进度条，调用hide方法无效；
+//
+//			function getVal() {
+//				var rangeObj = mui('#range2');
+//				mui.toast(rangeObj[0].value);
+//			}
+
+			mui.plusReady(function() {
+//				var isActive = document.getElementById('my-switch').classList.contains("mui-active");
+//				if(isActive) {
+//					mui.toast("打开状态!");
+//				} else {
+//					mui.toast("关闭状态!");
+//				}
+//				/*动态监听*/
+				document.getElementById('my-switch').addEventListener('toggle',function(e){
+					if(e.detail.isActive){
+						mui.toast('on');
+					}else{
+						mui.toast('off');
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="mui-slider">
+			<div class="mui-slider-group mui-slider-group mui-slider-loop">
+				<!--第一个内容区容器-->
+				<!--轮播 ：若图片为:1,2,3,4
+				那么要变成  4,1,2,3,4,1,同理-->
+				 <div class="mui-slider-item mui-slider-item-duplicate">
+				 <img src="img/poison.svg" />
+				 </div>
+				<div class="mui-slider-item">
+					<img src="img/angle.svg" />
+				</div>
+				<!--第二个内容区-->
+				<div class="mui-slider-item">
+					<img src="img/cool.svg" />
+				</div>
+				<div class="mui-slider-item">
+					<img src="img/poison.svg" />
+				</div>
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<img src="img/angle.svg" />
+				</div>
+			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator" onclick="chenge(2)";></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			mui.plusReady(function() {
+				//获得slidr插件对象
+//				var gallery = mui('.mui-slider');
+//				gallery.slider({
+//					/*自动播放周期,若为0则不自动播放，默认为0*/
+//					interval: 500
+//				})
+				
+				/*轮播事件，动态处理一些业务逻辑*/
+				var item2Show=false,item3Show=false;/*子选项卡是否显示标志*/
+				document.querySelector('.mui-slider').addEventListener('slide',function(e){
+					if(e.detail.slideNumber===1&&!item2Show){
+						/*切换到第二个选项卡*/
+						/*根据具体业务，动态获得第二个选项卡内容*/
+						var content=....
+						/*显示内容*/
+						document.getElementById('item2').innerHTML=content;
+						/*改变标志位，下次直接显示*/
+						item2Show=true;
+					}else if(e.detail.slideNumber===2&&!item3Show){
+						/*切换到第三个选项卡*/
+						/*根据具体业务，动态获得第三个选项卡内容*/
+						var content=...
+						/*显示内容*/
+						document.getElementById('item3').innerHTML=content;
+						/*改变标志位，下次直接显示*/
+						item3Show=true;
+					}
+				})
+				
+				
+				
+			});
+			
+//			function chenge(index){
+//				/*轮播跳转*/
+//				var gallery=mui('.mui-slider');
+//				gallery.slider().gotoItem(index);
+//			}
+
+
+		</script>
+	</body>
+
+</html>
